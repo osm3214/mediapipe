@@ -328,6 +328,7 @@ class BuildExtension(build_ext.build_ext):
       os.makedirs(self.build_temp)
     bazel_command = [
         'bazel',
+        '--batch',
         'build',
         '--compilation_mode=opt',
         '--copt=-DNDEBUG',
