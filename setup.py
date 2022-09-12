@@ -185,12 +185,13 @@ class GeneratePyProtos(build_ext.build_ext):
     output = os.path.join(self.build_lib, source.replace('.proto', '_pb2.py'))
     if not os.path.exists(output):
       sys.stderr.write('generating proto file: %s\n' % output)
-      protoc_command = [
-          self._protoc, '-I.',
-          '--python_out=' + os.path.abspath(self.build_lib), source
-      ]
+      # protoc_command = [
+      #     self._protoc, '-I.',
+      #     '--python_out=' + os.path.abspath(self.build_lib), source
+      # ]
+      protoc_command = [self._protoc, '-I.', '-I/usr/local/include', '--python_out=.', source]
       if subprocess.call(protoc_command) != 0:
-        sys.exit(-1)
+        sys.exi+t(-1)
 
 
 class BuildModules(build_ext.build_ext):
