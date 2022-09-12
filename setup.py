@@ -263,7 +263,7 @@ class BuildModules(build_ext.build_ext):
 
     bazel_command = [
         'bazel',
-        '--batch'
+        '--batch',
         'build',
         '--compilation_mode=opt',
         '--copt=-DNDEBUG',
