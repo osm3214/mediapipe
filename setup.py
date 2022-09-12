@@ -25,9 +25,7 @@ import subprocess
 import sys
 
 import setuptools
-from setuptools.command import build_ext
-from setuptools.command import build_py
-from setuptools.command import install
+from setuptools.command import build_ext, build_py, install
 
 __version__ = 'dev'
 IS_WINDOWS = (platform.system() == 'Windows')
@@ -239,7 +237,7 @@ class BuildModules(build_ext.build_ext):
         'face_landmark/face_landmark_front_cpu',
         'hand_landmark/hand_landmark_tracking_cpu',
         'holistic_landmark/holistic_landmark_cpu', 'objectron/objectron_cpu',
-        'pose_landmark/pose_landmark_cpu',
+        'pose_landmark/pose_landmark_gpu',
         'selfie_segmentation/selfie_segmentation_cpu'
     ]
     for elem in binary_graphs:
@@ -264,10 +262,13 @@ class BuildModules(build_ext.build_ext):
 
     bazel_command = [
         'bazel',
+        '--batch'
         'build',
         '--compilation_mode=opt',
         '--copt=-DNDEBUG',
-        '--define=MEDIAPIPE_DISABLE_GPU=1',
+        # '--define=MEDIAPIPE_DISABLE_GPU=1',
+        '--copt=-DMESA_EGL_NO_X11_HEADERS',
+        '--copt=-DEGL_NO_X11',
         '--action_env=PYTHON_BIN_PATH=' + _normalize_path(sys.executable),
         binary_graph_target,
     ]
@@ -329,7 +330,9 @@ class BuildExtension(build_ext.build_ext):
         'build',
         '--compilation_mode=opt',
         '--copt=-DNDEBUG',
-        '--define=MEDIAPIPE_DISABLE_GPU=1',
+        # '--define=MEDIAPIPE_DISABLE_GPU=1',
+        '--copt=-DMESA_EGL_NO_X11_HEADERS',
+        '--copt=-DEGL_NO_X11',
         '--action_env=PYTHON_BIN_PATH=' + _normalize_path(sys.executable),
         str(ext.bazel_target + '.so'),
     ]
