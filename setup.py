@@ -251,6 +251,7 @@ class BuildModules(build_ext.build_ext):
 
     fetch_model_command = [
         'bazel',
+        '--batch',
         'build',
         external_file,
     ]
