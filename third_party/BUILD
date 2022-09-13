@@ -107,7 +107,7 @@ cmake_external(
         "WITH_PNG": "ON",
         "WITH_TIFF": "ON",
         "WITH_WEBP": "OFF",
-        "WITH_NEON": "OFF",
+        "ENABLE_NEON": "OFF",
         "WITH_TENGINE": "OFF",
         # Optimization flags
         "CV_ENABLE_INTRINSICS": "ON",
