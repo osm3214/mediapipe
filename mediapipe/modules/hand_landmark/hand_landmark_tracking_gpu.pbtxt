@@ -86,14 +86,15 @@ node {
 }
 
 node: {
-calculator: “ColorConvertCalculator”
-input_stream: “RGB_IN:image”
-output_stream: “RGBA_OUT:image_rgba”
+  calculator: "ColorConvertCalculator"
+  input_stream: "RGB_IN:image"
+  output_stream: "RGBA_OUT:image_rgba"
 }
+
 node: {
-calculator: “ImageFrameToGpuBufferCalculator”
-input_stream: “image_rgba”
-output_stream: “image_gpu”
+  calculator: "ImageFrameToGpuBufferCalculator"
+  input_stream: "image_rgba"
+  output_stream: "image_gpu"
 }
 
 # Drops the incoming image if enough hands have already been identified from the
