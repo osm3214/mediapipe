@@ -73,7 +73,6 @@ cc_library(
         "//mediapipe/modules/face_detection:face_detection_short_range_cpu",
         "//mediapipe/modules/face_detection:face_detection_short_range_gpu",
         "//mediapipe/modules/face_landmark:face_landmark_front_cpu",
-        "//mediapipe/modules/face_landmark:face_landmark_front_gpu",
         "//mediapipe/modules/hand_landmark:hand_landmark_tracking_gpu",
         "//mediapipe/modules/holistic_landmark:holistic_landmark_cpu",
         "//mediapipe/modules/holistic_landmark:holistic_landmark_gpu",
