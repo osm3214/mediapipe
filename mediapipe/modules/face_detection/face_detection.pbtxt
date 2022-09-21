@@ -29,14 +29,15 @@ graph_options: {
 }
 
 node: {
-calculator: “ColorConvertCalculator”
-input_stream: “RGB_IN:image”
-output_stream: “RGBA_OUT:image_rgba”
+  calculator: "ColorConvertCalculator"
+  input_stream: "RGB_IN:image"
+  output_stream: "RGBA_OUT:image_rgba"
 }
+
 node: {
-calculator: “ImageFrameToGpuBufferCalculator”
-input_stream: “image_rgba”
-output_stream: “image_gpu”
+  calculator: "ImageFrameToGpuBufferCalculator"
+  input_stream: "image_rgba"
+  output_stream: "image_gpu"
 }
 
 # Converts the input CPU or GPU image to the multi-backend image type (Image).
