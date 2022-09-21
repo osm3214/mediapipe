@@ -123,9 +123,9 @@ class Holistic(SolutionBase):
             'use_prev_landmarks': not static_image_mode,
         },
         calculator_params={
-            'poselandmarkcpu__posedetectioncpu__TensorsToDetectionsCalculator.min_score_thresh':
+            'poselandmarkgpu__posedetectiongpu__TensorsToDetectionsCalculator.min_score_thresh':
                 min_detection_confidence,
-            'poselandmarkcpu__poselandmarkbyroicpu__tensorstoposelandmarksandsegmentation__ThresholdingCalculator.threshold':
+            'poselandmarkgpu__poselandmarkbyroigpu__tensorstoposelandmarksandsegmentation__ThresholdingCalculator.threshold':
                 min_tracking_confidence,
         },
         outputs=[
