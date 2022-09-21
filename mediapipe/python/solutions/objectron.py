@@ -15,34 +15,30 @@
 """MediaPipe Objectron."""
 
 import enum
-from typing import List, Tuple, NamedTuple, Optional
+from typing import List, NamedTuple, Optional, Tuple
 
 import attr
 import numpy as np
-
 # pylint: disable=unused-import
-from mediapipe.calculators.core import constant_side_packet_calculator_pb2
-from mediapipe.calculators.core import gate_calculator_pb2
-from mediapipe.calculators.core import split_vector_calculator_pb2
-from mediapipe.calculators.tensor import image_to_tensor_calculator_pb2
-from mediapipe.calculators.tensor import inference_calculator_pb2
-from mediapipe.calculators.tensor import tensors_to_detections_calculator_pb2
-from mediapipe.calculators.tensor import tensors_to_floats_calculator_pb2
-from mediapipe.calculators.tensor import tensors_to_landmarks_calculator_pb2
+from mediapipe.calculators.core import (constant_side_packet_calculator_pb2,
+                                        gate_calculator_pb2,
+                                        split_vector_calculator_pb2)
+from mediapipe.calculators.tensor import (image_to_tensor_calculator_pb2,
+                                          inference_calculator_pb2,
+                                          tensors_to_detections_calculator_pb2,
+                                          tensors_to_floats_calculator_pb2,
+                                          tensors_to_landmarks_calculator_pb2)
 from mediapipe.calculators.tflite import ssd_anchors_calculator_pb2
-from mediapipe.calculators.util import association_calculator_pb2
-from mediapipe.calculators.util import collection_has_min_size_calculator_pb2
-from mediapipe.calculators.util import detection_label_id_to_text_calculator_pb2
-from mediapipe.calculators.util import detections_to_rects_calculator_pb2
-from mediapipe.calculators.util import landmark_projection_calculator_pb2
-from mediapipe.calculators.util import local_file_contents_calculator_pb2
-from mediapipe.calculators.util import non_max_suppression_calculator_pb2
-from mediapipe.calculators.util import rect_transformation_calculator_pb2
-from mediapipe.calculators.util import thresholding_calculator_pb2
+from mediapipe.calculators.util import (
+    association_calculator_pb2, collection_has_min_size_calculator_pb2,
+    detection_label_id_to_text_calculator_pb2,
+    detections_to_rects_calculator_pb2, landmark_projection_calculator_pb2,
+    local_file_contents_calculator_pb2, non_max_suppression_calculator_pb2,
+    rect_transformation_calculator_pb2, thresholding_calculator_pb2)
 from mediapipe.framework.formats import landmark_pb2
-from mediapipe.modules.objectron.calculators import annotation_data_pb2
-from mediapipe.modules.objectron.calculators import frame_annotation_to_rect_calculator_pb2
-from mediapipe.modules.objectron.calculators import lift_2d_frame_annotation_to_3d_calculator_pb2
+from mediapipe.modules.objectron.calculators import (
+    annotation_data_pb2, frame_annotation_to_rect_calculator_pb2,
+    lift_2d_frame_annotation_to_3d_calculator_pb2)
 # pylint: enable=unused-import
 from mediapipe.python.solution_base import SolutionBase
 from mediapipe.python.solutions import download_utils
@@ -75,7 +71,7 @@ class BoxLandmark(enum.IntEnum):
   BACK_TOP_RIGHT = 7
   FRONT_TOP_RIGHT = 8
 
-_BINARYPB_FILE_PATH = 'mediapipe/modules/objectron/objectron_cpu.binarypb'
+_BINARYPB_FILE_PATH = 'mediapipe/modules/objectron/objectron_gpu.binarypb'
 BOX_CONNECTIONS = frozenset([
     (BoxLandmark.BACK_BOTTOM_LEFT, BoxLandmark.FRONT_BOTTOM_LEFT),
     (BoxLandmark.BACK_BOTTOM_LEFT, BoxLandmark.BACK_TOP_LEFT),

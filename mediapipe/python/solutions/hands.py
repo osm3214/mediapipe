@@ -18,27 +18,26 @@ import enum
 from typing import NamedTuple
 
 import numpy as np
-
 # pylint: disable=unused-import
-from mediapipe.calculators.core import constant_side_packet_calculator_pb2
-from mediapipe.calculators.core import gate_calculator_pb2
-from mediapipe.calculators.core import split_vector_calculator_pb2
-from mediapipe.calculators.tensor import image_to_tensor_calculator_pb2
-from mediapipe.calculators.tensor import inference_calculator_pb2
-from mediapipe.calculators.tensor import tensors_to_classification_calculator_pb2
-from mediapipe.calculators.tensor import tensors_to_detections_calculator_pb2
-from mediapipe.calculators.tensor import tensors_to_landmarks_calculator_pb2
+from mediapipe.calculators.core import (constant_side_packet_calculator_pb2,
+                                        gate_calculator_pb2,
+                                        split_vector_calculator_pb2)
+from mediapipe.calculators.tensor import (
+    image_to_tensor_calculator_pb2, inference_calculator_pb2,
+    tensors_to_classification_calculator_pb2,
+    tensors_to_detections_calculator_pb2, tensors_to_landmarks_calculator_pb2)
 from mediapipe.calculators.tflite import ssd_anchors_calculator_pb2
-from mediapipe.calculators.util import association_calculator_pb2
-from mediapipe.calculators.util import detections_to_rects_calculator_pb2
-from mediapipe.calculators.util import logic_calculator_pb2
-from mediapipe.calculators.util import non_max_suppression_calculator_pb2
-from mediapipe.calculators.util import rect_transformation_calculator_pb2
-from mediapipe.calculators.util import thresholding_calculator_pb2
+from mediapipe.calculators.util import (association_calculator_pb2,
+                                        detections_to_rects_calculator_pb2,
+                                        logic_calculator_pb2,
+                                        non_max_suppression_calculator_pb2,
+                                        rect_transformation_calculator_pb2,
+                                        thresholding_calculator_pb2)
 # pylint: enable=unused-import
 from mediapipe.python.solution_base import SolutionBase
 # pylint: disable=unused-import
 from mediapipe.python.solutions.hands_connections import HAND_CONNECTIONS
+
 # pylint: enable=unused-import
 
 
@@ -67,7 +66,7 @@ class HandLandmark(enum.IntEnum):
   PINKY_TIP = 20
 
 
-_BINARYPB_FILE_PATH = 'mediapipe/modules/hand_landmark/hand_landmark_tracking_cpu.binarypb'
+_BINARYPB_FILE_PATH = 'mediapipe/modules/hand_landmark/hand_landmark_tracking_gpu.binarypb'
 
 
 class Hands(SolutionBase):
@@ -119,9 +118,9 @@ class Hands(SolutionBase):
             'use_prev_landmarks': not static_image_mode,
         },
         calculator_params={
-            'palmdetectioncpu__TensorsToDetectionsCalculator.min_score_thresh':
+            'palmdetectiongpu__TensorsToDetectionsCalculator.min_score_thresh':
                 min_detection_confidence,
-            'handlandmarkcpu__ThresholdingCalculator.threshold':
+            'handlandmarkgpu__ThresholdingCalculator.threshold':
                 min_tracking_confidence,
         },
         outputs=[

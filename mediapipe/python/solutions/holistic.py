@@ -16,40 +16,40 @@
 from typing import NamedTuple
 
 import numpy as np
-
 # The following imports are needed because python pb2 silently discards
 # unknown protobuf fields.
 # pylint: disable=unused-import
-from mediapipe.calculators.core import constant_side_packet_calculator_pb2
-from mediapipe.calculators.core import gate_calculator_pb2
-from mediapipe.calculators.core import split_vector_calculator_pb2
-from mediapipe.calculators.tensor import image_to_tensor_calculator_pb2
-from mediapipe.calculators.tensor import inference_calculator_pb2
-from mediapipe.calculators.tensor import tensors_to_classification_calculator_pb2
-from mediapipe.calculators.tensor import tensors_to_floats_calculator_pb2
-from mediapipe.calculators.tensor import tensors_to_landmarks_calculator_pb2
+from mediapipe.calculators.core import (constant_side_packet_calculator_pb2,
+                                        gate_calculator_pb2,
+                                        split_vector_calculator_pb2)
+from mediapipe.calculators.tensor import (
+    image_to_tensor_calculator_pb2, inference_calculator_pb2,
+    tensors_to_classification_calculator_pb2, tensors_to_floats_calculator_pb2,
+    tensors_to_landmarks_calculator_pb2)
 from mediapipe.calculators.tflite import ssd_anchors_calculator_pb2
-from mediapipe.calculators.util import detections_to_rects_calculator_pb2
-from mediapipe.calculators.util import landmark_projection_calculator_pb2
-from mediapipe.calculators.util import local_file_contents_calculator_pb2
-from mediapipe.calculators.util import non_max_suppression_calculator_pb2
-from mediapipe.calculators.util import rect_transformation_calculator_pb2
+from mediapipe.calculators.util import (detections_to_rects_calculator_pb2,
+                                        landmark_projection_calculator_pb2,
+                                        local_file_contents_calculator_pb2,
+                                        non_max_suppression_calculator_pb2,
+                                        rect_transformation_calculator_pb2)
 from mediapipe.framework.tool import switch_container_pb2
-from mediapipe.modules.holistic_landmark.calculators import roi_tracking_calculator_pb2
-# pylint: enable=unused-import
-
+from mediapipe.modules.holistic_landmark.calculators import \
+    roi_tracking_calculator_pb2
 from mediapipe.python.solution_base import SolutionBase
 from mediapipe.python.solutions import download_utils
 # pylint: disable=unused-import
-from mediapipe.python.solutions.face_mesh_connections import FACEMESH_CONTOURS
-from mediapipe.python.solutions.face_mesh_connections import FACEMESH_TESSELATION
+from mediapipe.python.solutions.face_mesh_connections import (
+    FACEMESH_CONTOURS, FACEMESH_TESSELATION)
 from mediapipe.python.solutions.hands import HandLandmark
 from mediapipe.python.solutions.hands_connections import HAND_CONNECTIONS
 from mediapipe.python.solutions.pose import PoseLandmark
 from mediapipe.python.solutions.pose_connections import POSE_CONNECTIONS
+
 # pylint: enable=unused-import
 
-_BINARYPB_FILE_PATH = 'mediapipe/modules/holistic_landmark/holistic_landmark_cpu.binarypb'
+# pylint: enable=unused-import
+
+_BINARYPB_FILE_PATH = 'mediapipe/modules/holistic_landmark/holistic_landmark_gpu.binarypb'
 
 
 def _download_oss_pose_landmark_model(model_complexity):

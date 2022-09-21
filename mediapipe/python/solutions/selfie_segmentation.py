@@ -20,16 +20,17 @@ import numpy as np
 # unknown protobuf fields.
 # pylint: disable=unused-import
 from mediapipe.calculators.core import constant_side_packet_calculator_pb2
-from mediapipe.calculators.tensor import image_to_tensor_calculator_pb2
-from mediapipe.calculators.tensor import inference_calculator_pb2
-from mediapipe.calculators.tensor import tensors_to_segmentation_calculator_pb2
+from mediapipe.calculators.tensor import (
+    image_to_tensor_calculator_pb2, inference_calculator_pb2,
+    tensors_to_segmentation_calculator_pb2)
 from mediapipe.calculators.util import local_file_contents_calculator_pb2
 from mediapipe.framework.tool import switch_container_pb2
-# pylint: enable=unused-import
-
 from mediapipe.python.solution_base import SolutionBase
 
-_BINARYPB_FILE_PATH = 'mediapipe/modules/selfie_segmentation/selfie_segmentation_cpu.binarypb'
+# pylint: enable=unused-import
+
+
+_BINARYPB_FILE_PATH = 'mediapipe/modules/selfie_segmentation/selfie_segmentation_gpu.binarypb'
 
 
 class SelfieSegmentation(SolutionBase):

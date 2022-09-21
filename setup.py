@@ -233,13 +233,13 @@ class BuildModules(build_ext.build_ext):
       self._download_external_file(external_file)
 
     binary_graphs = [
-        'face_detection/face_detection_short_range_cpu',
-        'face_detection/face_detection_full_range_cpu',
-        'face_landmark/face_landmark_front_cpu',
-        'hand_landmark/hand_landmark_tracking_cpu',
-        'holistic_landmark/holistic_landmark_cpu', 'objectron/objectron_cpu',
+        'face_detection/face_detection_short_range_gpu',
+        'face_detection/face_detection_full_range_gpu',
+        'face_landmark/face_landmark_front_gpu',
+        'hand_landmark/hand_landmark_tracking_gpu',
+        'holistic_landmark/holistic_landmark_gpu', 'objectron/objectron_gpu',
         'pose_landmark/pose_landmark_gpu',
-        'selfie_segmentation/selfie_segmentation_cpu'
+        'selfie_segmentation/selfie_segmentation_gpu'
     ]
     for elem in binary_graphs:
       binary_graph = os.path.join('mediapipe/modules/', elem)
