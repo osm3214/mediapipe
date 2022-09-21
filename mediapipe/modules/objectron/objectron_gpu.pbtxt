@@ -23,15 +23,15 @@ output_stream: “NORM_RECTS:multi_box_rects”
 
 #Loads the file in the specified path into a blob.
 node {
-calculator: “LocalFileContentsCalculator”
-input_side_packet: “FILE_PATH:0:box_landmark_model_path”
-output_side_packet: “CONTENTS:0:box_landmark_model_blob”
+  calculator: “LocalFileContentsCalculator”
+  input_side_packet: “FILE_PATH:0:box_landmark_model_path”
+  output_side_packet: “CONTENTS:0:box_landmark_model_blob”
 }
 #Converts the input blob into a TF Lite model.
 node {
-calculator: “TfLiteModelCalculator”
-input_side_packet: “MODEL_BLOB:box_landmark_model_blob”
-output_side_packet: “MODEL:box_landmark_model”
+  calculator: “TfLiteModelCalculator”
+  input_side_packet: “MODEL_BLOB:box_landmark_model_blob”
+  output_side_packet: “MODEL:box_landmark_model”
 }
 
 

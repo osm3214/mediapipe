@@ -100,15 +100,15 @@ output_stream: "POSE_ROI:pose_landmarks_roi"
 output_stream: "POSE_DETECTION:pose_detection"
 
 node: {
-calculator: “ColorConvertCalculator”
-input_stream: “RGB_IN:image”
-output_stream: “RGBA_OUT:image_rgba”
+  calculator: “ColorConvertCalculator”
+  input_stream: “RGB_IN:image”
+  output_stream: “RGBA_OUT:image_rgba”
 }
 
 node: {
-calculator: “ImageFrameToGpuBufferCalculator”
-input_stream: “image_rgba”
-output_stream: “image_gpu”
+  calculator: “ImageFrameToGpuBufferCalculator”
+  input_stream: “image_rgba”
+  output_stream: “image_gpu”
 }
 
 # Predicts pose landmarks.
