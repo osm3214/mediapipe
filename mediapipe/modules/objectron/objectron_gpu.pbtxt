@@ -21,19 +21,19 @@ output_stream: “MULTI_LANDMARKS:multi_box_landmarks”
 #Crop rectangles derived from bounding box landmarks.
 output_stream: “NORM_RECTS:multi_box_rects”
 
-#Loads the file in the specified path into a blob.
+# Loads the file in the specified path into a blob.
 node {
-  calculator: “LocalFileContentsCalculator”
-  input_side_packet: “FILE_PATH:0:box_landmark_model_path”
-  output_side_packet: “CONTENTS:0:box_landmark_model_blob”
-}
-#Converts the input blob into a TF Lite model.
-node {
-  calculator: “TfLiteModelCalculator”
-  input_side_packet: “MODEL_BLOB:box_landmark_model_blob”
-  output_side_packet: “MODEL:box_landmark_model”
+  calculator: "LocalFileContentsCalculator"
+  input_side_packet: "FILE_PATH:0:box_landmark_model_path"
+  output_side_packet: "CONTENTS:0:box_landmark_model_blob"
 }
 
+# Converts the input blob into a TF Lite model.
+node {
+  calculator: "TfLiteModelCalculator"
+  input_side_packet: "MODEL_BLOB:box_landmark_model_blob"
+  output_side_packet: "MODEL:box_landmark_model"
+}
 
 # When the optional input side packet "use_prev_landmarks" is either absent or
 # set to true, uses the landmarks on the previous image to help localize
