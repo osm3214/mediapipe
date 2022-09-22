@@ -149,7 +149,7 @@ node {
 # elements in the vector have been processed.
 node {
   calculator: "BeginLoopNormalizedRectCalculator"
-  input_stream: "ITERABLE:multi_box_rects"
+  input_stream: "ITERABLE:box_rects"
   input_stream: "CLONE:image_gpu"
   output_stream: "ITEM:single_box_rect"
   output_stream: "CLONE:landmarks_image"
