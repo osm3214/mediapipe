@@ -4,8 +4,8 @@ type: "ObjectronGpuSubgraph"
 # Input/Output streams and input side packets.
 # Note that the input image is assumed to have aspect ratio 3:4 (width:height).
 input_stream: "IMAGE_GPU:image"
-#Path to TfLite model for 3D bounding box landmark prediction
-input_side_packet: “MODEL_PATH:box_landmark_model_path”
+# Path to TfLite model for 3D bounding box landmark prediction
+input_side_packet: "MODEL_PATH:box_landmark_model_path"
 # Allowed category labels, e.g. Footwear, Coffee cup, Mug, Chair, Camera
 input_side_packet: "LABELS_CSV:allowed_labels"
 # Max number of objects to detect/track. (int)
@@ -16,10 +16,11 @@ input_side_packet: "USE_PREV_LANDMARKS:use_prev_landmarks"
 
 # Collection of detected 3D objects, represented as a FrameAnnotation.
 output_stream: "FRAME_ANNOTATION:detected_objects"
-#Collection of box landmarks. (NormalizedLandmarkList)
-output_stream: “MULTI_LANDMARKS:multi_box_landmarks”
-#Crop rectangles derived from bounding box landmarks.
-output_stream: “NORM_RECTS:multi_box_rects”
+
+# Collection of box landmarks. (NormalizedLandmarkList)
+output_stream: "MULTI_LANDMARKS:multi_box_landmarks"
+# Crop rectangles derived from bounding box landmarks.
+output_stream: "NORM_RECTS:multi_box_rects"
 
 # Loads the file in the specified path into a blob.
 node {
