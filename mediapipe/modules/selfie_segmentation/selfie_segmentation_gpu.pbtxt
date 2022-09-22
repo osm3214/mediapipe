@@ -31,15 +31,17 @@ input_side_packet: "MODEL_SELECTION:model_selection"
 output_stream: "SEGMENTATION_MASK:segmentation_mask"
 
 node: {
-  calculator: “ColorConvertCalculator”
-  input_stream: “RGB_IN:image”
-  output_stream: “RGBA_OUT:image_rgba”
+  calculator: "ColorConvertCalculator"
+  input_stream: "RGB_IN:image"
+  output_stream: "RGBA_OUT:image_rgba"
 }
+
 node: {
-  calculator: “ImageFrameToGpuBufferCalculator”
-  input_stream: “image_rgba”
-  output_stream: “image_gpu”
+  calculator: "ImageFrameToGpuBufferCalculator"
+  input_stream: "image_rgba"
+  output_stream: "image_gpu"
 }
+
 
 # Resizes the input image into a tensor with a dimension desired by the model.
 node {
