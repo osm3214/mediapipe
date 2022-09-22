@@ -160,7 +160,7 @@ node {
 node {
   calculator: "BoxLandmarkSubgraph"
   input_stream: "IMAGE:landmarks_image"
-  input_side_packet: “MODEL:box_landmark_model”
+  input_side_packet: "MODEL:box_landmark_model"
   input_stream: "NORM_RECT:single_box_rect"
   output_stream: "NORM_LANDMARKS:single_box_landmarks"
 }
