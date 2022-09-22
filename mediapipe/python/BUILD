@@ -87,7 +87,6 @@ cc_library(
         "//mediapipe/modules/selfie_segmentation:selfie_segmentation_gpu",
         "//mediapipe/gpu:image_frame_to_gpu_buffer_calculator",
         "//mediapipe/calculators/image:color_convert_calculator",
-
     ],
 )
 

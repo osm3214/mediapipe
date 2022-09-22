@@ -191,7 +191,7 @@ class GeneratePyProtos(build_ext.build_ext):
       # ]
       protoc_command = [self._protoc, '-I.', '-I/usr/local/include', '--python_out=.', source]
       if subprocess.call(protoc_command) != 0:
-        sys.exi+t(-1)
+        sys.exit(-1)
 
 
 class BuildModules(build_ext.build_ext):
